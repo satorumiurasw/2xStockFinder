@@ -5,7 +5,7 @@ from datetime import date
 class StockStatement(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.IntegerField('銘柄コード', default=7105)  # 銘柄コード
-    year = models.IntegerField('年度', default=2025)  # 年度
+    year = models.IntegerField('年度', default=2022)  # 年度
     total_assets = models.IntegerField('総資産', blank=True, null=True)  # 総資産
     net_assets = models.IntegerField('純資産', blank=True, null=True)  # 純資産
     shareholders_equity = models.FloatField('株主資本', blank=True, null=True)  # 株主資本
@@ -34,7 +34,7 @@ class StockStatement(models.Model):
     total_return_ratio = models.FloatField('総還元性向', blank=True, null=True)  # 総還元性向
     net_asset_dividend_ratio = models.FloatField('純資産配当率', blank=True, null=True)  # 純資産配当率
     result = models.IntegerField(blank=True, null=True)
-    company_name = models.CharField(max_length=100, blank=True, null=True)  # 会社名
+    company_name = models.CharField(max_length=100, default="三菱ロジスネクスト", blank=True, null=True)  # 会社名
     proba = models.FloatField(blank=True, null=True)
     comment = models.CharField(max_length=200, blank=True, null=True)
     registered_date = models.DateField(default=date.today()) #default=date.today() : 本日の日付をデフォルトに設定

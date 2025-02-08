@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <title>{% block title %}2x Stock AI Finder{% endblock %}</title>
     <style>
         body {
@@ -11,7 +12,7 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background-color: #007bff;
+            background-color: #004085;
         }
         .navbar-brand {
             color: #fff;
@@ -24,18 +25,35 @@
         .contents {
             margin: 20px;
         }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .table thead {
+            background-color: #004085;
+            color: #fff;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 64, 133, 0.05);
+        }
     </style>
+</head>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">2x Stock AI Finder</a>
+            <a class="navbar-brand" href="/"><i class="bi bi-bar-chart-line-fill"></i> 2x Stock AI Finder</a>
             {% if user.is_authenticated %}
             <div class="d-flex">
                 <span class="navbar-text me-3">
-                    こんにちは、{{ user.username }} さん
+                    <i class="bi bi-person-circle"></i> こんにちは、{{ user.username }} さん
                 </span>
                 <form action="{% url 'logout' %}" method="post" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-link">ログアウト</button>
+                    <button type="submit" class="btn btn-link"><i class="bi bi-box-arrow-right"></i> ログアウト</button>
                 </form>
             </div>
             {% endif %}

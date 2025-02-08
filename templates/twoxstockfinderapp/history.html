@@ -22,9 +22,9 @@
                 <th>配当性向</th>
                 <th class="text-end">売上高<br>[百万円]</th>
                 <th>ROE</th>
-                <th class="text-end">投資CF<br>[百万円]</th>
-                <th>営業CFマージン</th>
-                <th class="text-end">財務CF<br>[百万円]</th>
+                <!-- <th class="text-end">投資CF<br>[百万円]</th> -->
+                <!-- <th>営業CFマージン</th> -->
+                <!-- <th class="text-end">財務CF<br>[百万円]</th> -->
                 <th></th>
             </tr>
         </thead>
@@ -36,19 +36,23 @@
                 <td>{{ statement.company_name }}</td>
                 <td>{{ statement.code }}</td>
                 <td>{{ statement.year }}</td>
-                <td>{% if statement.result == 0 %}見込みなし{% elif statement.result == 1 %}期待できる{% else %}None{% endif %}</td>
-                <td>{{ statement.proba|floatformat:2 }}</td>
+                <td class="{% if statement.result == 0 %}bg-danger text-white{% elif statement.result == 1 %}bg-success text-white{% endif %}">
+                  {% if statement.result == 0 %}<i class="bi bi-x-circle"></i> 残念。。
+                  {% elif statement.result == 1 %}<i class="bi bi-check-circle"></i> 期待！
+                  {% else %}None{% endif %}
+                </td>
+                <td>{{ statement.proba|floatformat:0 }}%</td>
                 <td>{{ statement.bps }}</td>
                 <td class="text-end">{{ statement.long_term_loans|div:1000000|floatformat:0|intcomma }}</td>
                 <td>{{ statement.dividend_payout_ratio }}</td>
                 <td class="text-end">{{ statement.revenue|div:1000000|floatformat:0|intcomma }}</td>
                 <td>{{ statement.roe }}</td>
-                <td class="text-end">{{ statement.investing_cf|div:1000000|floatformat:0|intcomma }}</td>
-                <td>{{ statement.operating_cf_margin }}</td>
-                <td class="text-end">{{ statement.financing_cf|div:1000000|floatformat:0|intcomma }}</td>
+                <!-- <td class="text-end">{{ statement.investing_cf|div:1000000|floatformat:0|intcomma }}</td> -->
+                <!-- <td>{{ statement.operating_cf_margin }}</td> -->
+                <!-- <td class="text-end">{{ statement.financing_cf|div:1000000|floatformat:0|intcomma }}</td> -->
                 <td>
                     <form class="delete" method="POST">{% csrf_token %}
-                        <button class="btn btn-outline-danger btn-sm" type="submit" name="d_id" value="{{ statement.id }}">削除</button>
+                        <button class="btn btn-outline-danger" type="submit" name="d_id" value="{{ statement.id }}"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

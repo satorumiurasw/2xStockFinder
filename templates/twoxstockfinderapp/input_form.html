@@ -2,22 +2,26 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center">情報入力画面</h2>
+    <h2 class="text-center text-primary"><i class="bi bi-pencil-square"></i> 情報入力画面</h2>
 </div>
 <form method="POST" class="register-form mt-4">{% csrf_token %}
     <div class="row justify-content-center">
         <div class="col-lg-6">
-            {{ form }}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {{ form.as_p }}
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- 送信（保存）ボタン-->
     <div class="row justify-content-center mt-3">
         <div class="col-lg-6 text-center">
-            <button id="submitButton" type="submit" class="btn btn-primary">
-                <span id="buttonText">保存</span>
-                <span id="loadingSpinnerText" class="d-none" role="status" aria-hidden="true">APIの起動に時間がかかっています</span>
+            <button id="submitButton" type="submit" class="btn btn-success d-block w-100">
+                <span id="buttonText"><i class="bi bi-save"></i> 保存</span>
                 <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <span id="loadingSpinnerText" class="d-none" role="status" aria-hidden="true">APIの起動に時間がかかっています</span>
             </button>
         </div>
     </div>
@@ -28,14 +32,14 @@
     document.querySelector(".register-form").addEventListener("submit", function(event) {
         let button = document.getElementById("submitButton");
         let text = document.getElementById("buttonText");
-        let spinner_text = document.getElementById("loadingSpinnerText");
         let spinner = document.getElementById("loadingSpinner");
+        let spinner_text = document.getElementById("loadingSpinnerText");
 
         // ボタンを無効化 & スピナーを表示
         button.disabled = true;
         text.classList.add("d-none"); // "保存" を非表示
-        spinner_text.classList.remove("d-none"); // スピナーのテキストを表示
         spinner.classList.remove("d-none"); // スピナーを表示
+        spinner_text.classList.remove("d-none"); // スピナーのテキストを表示
 
         // すべての入力フォームをリードオンリーに設定
         let inputs = document.querySelectorAll(".register-form input, .register-form select, .register-form textarea");
