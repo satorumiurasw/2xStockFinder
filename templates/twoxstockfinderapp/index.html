@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<div class="container" style="margin-top: 20px;">
-    <h5 style="text-align: center;">決算データをリストに新規登録するか、過去の決算データを確認するか選んでください</h5>
+<div class="container mt-5">
+    <h5 class="text-center">決算データをリストに新規登録するか、過去の決算データを確認するか選んでください</h5>
 
-    <div class="row" style="margin-top: 20px;">
-        <div class="col s8" style="text-align: center;">
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-6 text-center">
             <!-- 入力フォーム遷移ボタン -->
-            <a href="/input_form"><button class="btn btn-primary" type="button" name="input" >新規決算データをリストに追加する。</button></a>
+            <a href="/input_form" class="btn btn-primary mb-3 d-block">新規決算データをリストに追加する。</a>
             <!-- 決算データリスト一覧遷移ボタン -->
-            <a href="/history"><button class="btn btn-primary" type="button" name="history">決算データリストを確認する。</button></a>
+            <a href="/history" class="btn btn-primary d-block">決算データリストを確認する。</a>
         </div>
     </div>
 </div>
