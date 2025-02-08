@@ -1,0 +1,15 @@
+{% extends 'twoxstockfinderapp/base.html' %}
+
+{% block content %}
+<div class="container" style="margin-top: 20px;">
+    <h2 style="font-size:30px;">3年以内に株価{% if result == 0 %}は2倍にならなさそうです。。{% else %}が2倍になりそうです！{% endif %}</h2>
+
+    <p>信頼度は{{proba}}%です。</p>
+
+    <p>会社名:{{company_name}}</p>
+    <p>証券コード:{{code}}</p>
+    <p>決算年度:{{year}}</p>
+
+    <a href="/history"><button class="btn btn-primary" type="button" name="history">決算リスト一覧</button>
+</div>
+{% endblock %}

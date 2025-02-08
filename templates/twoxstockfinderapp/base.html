@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>{% block title %}2x Stock AI Finder{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light" style="background-color: #00b9f1;">
+        <span class="navbar-brand mb-0 h1">2x Stock AI Finder</span>
+        <!-- ログアウト機能の追加 -->
+        {% if user.is_authenticated %}
+        <span style="font-size:15px; text-align: right;">
+            <!-- ログアウトのURLに移動するように処理 -->
+            <!-- <a href="{% url 'logout' %}" style="color:white; text-decoration: underline;">
+            こんにちは、{{user.username}}さん
+            </a> -->
+            <!-- GETからPOSTに変更 -->
+            <!-- <form action="{% url 'logout' %}" method="post" style="display:inline;">{% csrf_token %}
+                <button type="submit" style="color:white; text-decoration: underline; background:none; border:none; cursor:pointer;">
+                こんにちは、{{ user.username }} さん
+                </button>
+            </form> -->
+            こんにちは、{{ user.username }} さん
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">{% csrf_token %}
+                <button type="submit" class="btn btn-link" type="button" name="logout">
+                ログアウト
+                </button>
+            </form>
+        </span>
+        {% endif %}
+    </nav>
+  
+    <div class="contents" style="margin:0 20px">
+        {% block content %}
+  
+        {% endblock %}
+    </div>
+</body>
+</html>
