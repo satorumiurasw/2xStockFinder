@@ -6,16 +6,24 @@
         3年以内に株価{% if result == 0 %}は2倍にならなさそうです。。 <i class="bi bi-emoji-frown"></i> {% else %}が2倍になりそうです！ <i class="bi bi-emoji-smile"></i> {% endif %}
     </h2>
 
-    <p class="text-center">信頼度は{{ proba }}%です。</p>
+    <p class="text-center">信頼度は{{ proba|floatformat:0 }}%です。</p>
+    <p class="text-center">投資判断は自己責任でお願いします！</p>
 
-    <div class="mt-4">
-        <p><strong><i class="bi bi-building"></i> 会社名:</strong> {{ company_name }}</p>
-        <p><strong><i class="bi bi-barcode"></i> 証券コード:</strong> {{ code }}</p>
-        <p><strong><i class="bi bi-calendar"></i> 決算年度:</strong> {{ year }}</p>
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p><strong><i class="bi bi-building"></i> 会社名:</strong> {{ company_name }}</p>
+                    <p><strong><i class="bi bi-barcode"></i> 証券コード:</strong> {{ code }}</p>
+                    <p><strong><i class="bi bi-calendar"></i> 決算年度:</strong> {{ year }}</p>
+                    <p><strong><i class="bi bi-currency-yen"></i> 現在の株価:</strong> {{ current_price }}円</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="/history" class="btn btn-success"><i class="bi bi-list-ul"></i> 決算リスト一覧</a>
+        <a href="/history" class="btn btn-success d-block w-50 mx-auto"><i class="bi bi-list-ul"></i> 決算リスト一覧</a>
     </div>
 </div>
 {% endblock %}

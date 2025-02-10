@@ -12,7 +12,7 @@
             <tr>
                 <th>ID</th>
                 <th>登録日</th>
-                <th>会社名</th>
+                <th class="text-start">会社名</th>
                 <th>銘柄コード</th>
                 <th>決算年度</th>
                 <th>2倍予測</th>
@@ -33,7 +33,7 @@
             <tr>
                 <td>{{ statement.id }}</td>
                 <td>{{ statement.registered_date }}</td>
-                <td>{{ statement.company_name }}</td>
+                <td class="text-start">{{ statement.company_name }}</td>
                 <td>{{ statement.code }}</td>
                 <td>{{ statement.year }}</td>
                 <td class="{% if statement.result == 0 %}bg-danger text-white{% elif statement.result == 1 %}bg-success text-white{% endif %}">
